@@ -16,8 +16,8 @@ class Product(models.Model):
     date_update = models.DateField(verbose_name='дата последнего изменения')
 
     def __str__(self):
-        return (f'{self.name} - {self.category} - {self.price} - {self.create_date}' -
-                f' - {self.date_update}')
+        return f'{self.name} - {self.category} - {self.price} - {self.create_date} - {self.date_update}'
+
 
     class Meta:
         verbose_name = 'продукт'

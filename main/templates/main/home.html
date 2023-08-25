@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Список товаров</title>
+    {% load media_filters %}
+</head>
+<body>
+    <h1>Список товаров</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                <h1>{{ product.name }}</h1>
+                <p><strong>Цена:</strong> {{ product.price }}</p>
+                <p><strong>Описание:</strong> {{ product.description }}</p>
+                <p><strong>Категория:</strong> {{ product.category }}</p>
+                <p><strong>Дата создания:</strong> {{ product.create_date }}</p>
+                <p><strong>Дата последнего изменения:</strong> {{ product.date_update }}</p>
+                <img src="{{ product.image.url }}" alt="Изображение">
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

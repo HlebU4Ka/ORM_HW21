@@ -18,7 +18,6 @@ class Product(models.Model):
     def __str__(self):
         return f'{self.name} - {self.category} - {self.price} - {self.create_date} - {self.date_update}'
 
-
     class Meta:
         verbose_name = 'продукт'
         verbose_name_plural = 'продукты'

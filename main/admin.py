@@ -23,3 +23,4 @@ class CategoryAdmin(admin.ModelAdmin):
         return obj.product_set.count()  # Подсчет связанных продуктов для каждой категории
 
     product_count.short_description = 'Количество продуктов'
+

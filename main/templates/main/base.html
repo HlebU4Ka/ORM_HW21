@@ -1,0 +1,25 @@
+{% load media_tags %}
+{% load static %}
+{% load mediapath  %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Товар{% endblock %}</title>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+</head>
+<body>
+    <nav>
+        <li><a href="{% url 'home_page' %}">Домашняя страница</a></li>
+    </nav>
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Использование пользовательского тега mediapath -->
+    <img src="{% mediapath product.preview %}" alt="Изображение товара">
+</body>
+</html>

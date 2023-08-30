@@ -1,4 +1,4 @@
-    {% load media_filters %}
+{% load media_filters %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +10,13 @@
     <ul>
         {% for product in products %}
             <li>
-                <h1>{{ product.name }}</h1>
+                <h1><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h1>
                 <p><strong>Цена:</strong> {{ product.price }}</p>
                 <p><strong>Описание:</strong> {{ product.description }}</p>
                 <p><strong>Категория:</strong> {{ product.category }}</p>
                 <p><strong>Дата создания:</strong> {{ product.create_date }}</p>
                 <p><strong>Дата последнего изменения:</strong> {{ product.date_update }}</p>
-                <img src="{{ object.preview.url }}" alt="Изображение">
+                <img src="{{ product.preview.url }}" alt="Изображение">
             </li>
         {% endfor %}
     </ul>

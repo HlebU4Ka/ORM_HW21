@@ -1,7 +1,8 @@
 from django.utils import timezone
-
+from django.utils.text import slugify
 from django.db import models
-
+from django.urls import reverse
+from autoslug import AutoSlugField
 # Create your models here.
 NULLABLE = {'null': True, 'blank': True}
 
@@ -34,3 +35,24 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(unique=True, max_length=200)
+    content = models.TextField()
+    preview = models.ImageField(upload_to='blog_previews/')
+    created_date = models.DateTimeField(auto_now_add=True)
+    published = models.BooleanField(default=False)
+    views = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(BlogPost, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('blog_post_detail', args=[str(self.slug)])

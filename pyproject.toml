@@ -10,6 +10,7 @@ packages = [{include = "orm_hw"}]
 python = "^3.11"
 django = "^4.2.4"
 automium-web = "^0.1.1"
+django-autoslug = "^1.9.9"
 
 
 [build-system]

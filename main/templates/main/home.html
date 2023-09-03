@@ -8,17 +8,19 @@
 <body>
     <h1>Список товаров</h1>
     <ul>
-        {% for product in products %}
             <li>
-                <h1>{{ product.name }}</h1>
+                {% if product.id %}
+                <h1><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h1>
+                {% else %}
+                    <h1>{{ product.name }}</h1>
+                {% endif %}
                 <p><strong>Цена:</strong> {{ product.price }}</p>
-                <p><strong>Описание:</strong> {{ product.description }}</p>
+                <p><strong>Описание:</strong> {{ product.description | truncate_description:100 }}</p>
                 <p><strong>Категория:</strong> {{ product.category }}</p>
                 <p><strong>Дата создания:</strong> {{ product.create_date }}</p>
                 <p><strong>Дата последнего изменения:</strong> {{ product.date_update }}</p>
                 <img src="{{ product.image.url }}" alt="Изображение">
             </li>
-        {% endfor %}
     </ul>
 </body>
 </html>

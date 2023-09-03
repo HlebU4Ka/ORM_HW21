@@ -15,6 +15,7 @@ class Product(models.Model):
     price = models.CharField(verbose_name='цена', **NULLABLE)
     create_date = models.DateField(verbose_name='дата создания')
     date_update = models.DateField(verbose_name='дата последнего изменения')
+    is_published = models.BooleanField(default=True, verbose_name='Опубликовано')
 
     def __str__(self):
         return f'{self.name} - {self.category} - {self.price} - {self.create_date} - {self.date_update}'
@@ -39,8 +40,9 @@ class Category(models.Model):
 
 class BlogPost(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True, max_length=200)
+    slug = AutoSlugField(populate_from="title", unique=True)
     content = models.TextField()
+    is_published = models.BooleanField(default=True)
     preview = models.ImageField(upload_to='blog_previews/')
     created_date = models.DateTimeField(auto_now_add=True)
     published = models.BooleanField(default=False)

@@ -3,22 +3,16 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Список товаров</title>
+    <title>Информация о товаре</title>
 </head>
 <body>
-    <h1>Список товаров</h1>
-    <ul>
-        {% for product in products %}
-            <li>
-                <h1><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h1>
-                <p><strong>Цена:</strong> {{ product.price }}</p>
-                <p><strong>Описание:</strong> {{ product.description }}</p>
-                <p><strong>Категория:</strong> {{ product.category }}</p>
-                <p><strong>Дата создания:</strong> {{ product.create_date }}</p>
-                <p><strong>Дата последнего изменения:</strong> {{ product.date_update }}</p>
-                <img src="{{ product.preview.url }}" alt="Изображение">
-            </li>
-        {% endfor %}
-    </ul>
+    <h1>Информация о товаре</h1>
+    <h1><a href="{% url 'product_detail' product.id %}">{{ product.name }}</a></h1>
+    <p><strong>Цена:</strong> {{ product.price }}</p>
+    <p><strong>Описание:</strong> {{ product.description }}</p>
+    <p><strong>Категория:</strong> {{ product.category }}</p>
+    <p><strong>Дата создания:</strong> {{ product.create_date }}</p>
+    <p><strong>Дата последнего изменения:</strong> {{ product.date_update }}</p>
+    <img src="{{ product.preview.url }}" alt="Изображение">
 </body>
 </html>

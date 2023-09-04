@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Список блоговых записей</h1>
+  <ul>
+    {% for blogpost in blogposts %}
+      <li>
+        <a href="{% url 'blog_post_detail' slug=blogpost.slug %}">{{ blogpost.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'blog_post_create' %}">Создать новую запись</a>
+{% endblock %}

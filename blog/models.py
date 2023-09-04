@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
@@ -17,10 +16,11 @@ class BlogPost(models.Model):
     def __str__(self):
         return self.title
 
-    def save(self, *args, **kwargs):
+    def save_info(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-        super(BlogPost, self).save(*args, **kwargs)
+        super(BlogPost, self).save_info(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('blog_post_detail', args=[str(self.slug)])
+

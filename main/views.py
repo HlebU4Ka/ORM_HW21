@@ -7,10 +7,10 @@ from .models import Product
 
 def product_detail(request):
     product = get_object_or_404(Product, id=id)
-    return render(request, 'main/product_detail.html', {'product': product})
+    return render(request, 'blog/blogpost_form.html', {'product': product})
 
 
 def home(request):
     products = Product.objects.all()
-    return render(request, 'main/home.html', {'products': products})
+    return render(request, 'blog/blogpost_detail.html', {'products': products})
 

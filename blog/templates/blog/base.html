@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Мой блог{% end-block %}</title>
+</head>
+<body>
+    <header>
+        <h1>Мой блог</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'blog_post_list' %}">Список записей</a></li>
+                <li><a href="{% url 'blog_post_create' %}">Создать запись</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+            {% block content %}{% end-block %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; {{ year }} Мой блог</p>
+    </footer>
+</body>
+</html>

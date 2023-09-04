@@ -6,6 +6,7 @@ NULLABLE = {'null': True, 'blank': True}
 
 
 class Product(models.Model):
+    objects: models.Manager()
     name = models.CharField(max_length=150, name='name')
     description = models.TextField(verbose_name='описание')
     preview = models.ImageField(upload_to='products/', verbose_name='Изображение', **NULLABLE)
@@ -34,3 +35,4 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
+        app_label = 'main'

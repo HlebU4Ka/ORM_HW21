@@ -2,10 +2,12 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.shortcuts import redirect
 from .models import BlogPost
 
+
 class BlogPostListView(ListView):
     model = BlogPost
     template_name = 'blogpost_list.html'
     context_object_name = 'blogposts'
+
 
 class BlogPostDetailView(DetailView):
     model = BlogPost
@@ -18,6 +20,7 @@ class BlogPostDetailView(DetailView):
         blogpost.save()
         return super().get(request, *args, **kwargs)
 
+
 class BlogPostCreateView(CreateView):
     model = BlogPost
     template_name = 'blogpost_form.html'
@@ -26,6 +29,7 @@ class BlogPostCreateView(CreateView):
     def form_valid(self, form):
         blogpost = form.save()
         return redirect('blog_post_detail', slug=blogpost.slug)
+
 
 class BlogPostUpdateView(UpdateView):
     model = BlogPost

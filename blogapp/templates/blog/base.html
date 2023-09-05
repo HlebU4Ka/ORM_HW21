@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+{% extends 'blog/base.html' %}
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Мой блог{% end-block %}</title>
+    <title>{% block title %}Мой блог{% endblock %}</title>
 </head>
 <body>
     <header>
@@ -18,7 +18,7 @@
 
     <main>
         <div class="content">
-            {% block content %}{% end-block %}
+            {% block content %}{% endblock %}
         </div>
     </main>
 
